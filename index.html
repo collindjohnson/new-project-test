@@ -3,690 +3,321 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social Swarm – A Founder's Best Friend for Rapid Growth</title>
-
+  <title>Social Swarm - Design + websites for funded B2B tech companies</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand:        '#00b25e',
-            'near-black': '#0f0f0f',
-            'dark-gray':  '#2f3a45',
-            'mid-gray':   '#6f6f6f',
-            'dim-gray':   '#5f6670',
-            'border':     '#e5edfe',
-            'border-md':  '#cfd8ec',
-            'bg-light':   '#ebf9f3',
-            'bg-page':    '#ffffff',
+            page: '#f3f3f3',
+            ink: '#0f1115',
+            soft: '#686d76',
+            line: '#e8e8ea',
+            panel: '#f8f8f9',
+            accent: '#111111',
+            coral: '#ff6b3d',
+            mint: '#8ddf9b'
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
           },
+          boxShadow: {
+            card: '0 1px 0 rgba(15,17,21,0.05), 0 14px 30px rgba(15,17,21,0.05)'
+          }
         }
       }
     }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
-    body { background-color: #ffffff; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-
-    /* Marquee */
-    .marquee-wrap { overflow: hidden; }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 28s linear infinite;
+    body {
+      background: #f3f3f3;
+      color: #0f1115;
+      -webkit-font-smoothing: antialiased;
     }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.22s ease;
     }
-
-    /* FAQ accordion */
-    .faq-answer { display: none; }
-    .faq-open .faq-answer { display: block; }
-    .faq-chevron { transition: transform 0.2s ease; }
-    .faq-open .faq-chevron { transform: rotate(180deg); }
-
-    /* Subtle card hover */
-    .card-hover { transition: box-shadow 0.2s ease, transform 0.2s ease; }
-    .card-hover:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-1px); }
-
-    /* Browser chrome */
-    .browser-chrome {
-      height: 28px;
-      background: #f6f6f6;
-      border-bottom: 1px solid #e5edfe;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 0 10px;
-      flex-shrink: 0;
+    .faq-open .faq-answer {
+      max-height: 180px;
     }
-    .browser-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-
-    /* Pill tag */
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid #e5edfe;
-      border-radius: 999px;
-      padding: 4px 12px;
-      font-size: 11px;
-      color: #6f6f6f;
-      background: #fff;
+    .faq-open .faq-plus {
+      transform: rotate(45deg);
     }
-    .pill-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: #00b25e; flex-shrink: 0;
+    .faq-plus {
+      transition: transform 0.2s ease;
+    }
+    .mock-frame {
+      background: linear-gradient(180deg, #ffffff 0%, #f8f8f9 100%);
+      border: 1px solid #ececf0;
     }
   </style>
 </head>
-
-<body class="bg-bg-page text-near-black">
-
-  <!-- ═══════════════════════════════════════
-       NAVIGATION
-  ════════════════════════════════════════ -->
-  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
-    <div class="max-w-[1216px] mx-auto px-6 h-14 flex items-center justify-between">
-
-      <!-- Logo -->
-      <div class="text-sm font-bold tracking-[-0.03em] leading-none select-none">Social Swarm</div>
-
-      <!-- Center links -->
-      <div class="hidden md:flex items-center gap-7">
-        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">Services</a>
-        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">Our Work</a>
-        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">Resources</a>
-      </div>
-
-      <!-- CTA -->
-      <button class="bg-near-black text-white text-[13px] font-medium px-4 py-2 rounded-full hover:bg-black transition-colors">
-        Book a Call
-      </button>
-    </div>
-  </nav>
-
-
-  <!-- ═══════════════════════════════════════
-       HERO
-  ════════════════════════════════════════ -->
-  <section class="max-w-[1216px] mx-auto px-6 pt-16 pb-14">
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 items-start">
-
-      <!-- Left: copy -->
-      <div class="pt-2">
-        <!-- Badge -->
-        <div class="pill mb-5">
-          <span class="pill-dot"></span>
-          Web Design &amp; Development for Founders
-        </div>
-
-        <!-- Headline -->
-        <h1 class="text-[40px] lg:text-[48px] font-extrabold leading-[1.1] tracking-[-0.035em] text-near-black mb-4 max-w-[480px]">
-          A Founder's Best Friend for Rapid Growth
-        </h1>
-
-        <!-- Sub-copy -->
-        <p class="text-[14px] text-mid-gray leading-[1.7] mb-8 max-w-[360px]">
-          Your fast-moving business deserves a partner that delivers exceptional design, seamless development, and ongoing support at the speed of your success.
-        </p>
-
-        <!-- CTA -->
-        <button class="bg-near-black text-white text-[13px] font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors">
-          Book a Call
-        </button>
-      </div>
-
-      <!-- Right: stacked browser mockups -->
-      <div class="flex items-start justify-center gap-3 lg:justify-end">
-
-        <!-- Mockup left -->
-        <div class="w-[155px] bg-white border border-border rounded-xl overflow-hidden shadow-sm mt-8 flex-shrink-0">
-          <div class="browser-chrome">
-            <div class="browser-dot bg-[#ff5f57]"></div>
-            <div class="browser-dot bg-[#febc2e]"></div>
-            <div class="browser-dot bg-[#28c840]"></div>
-          </div>
-          <img src="https://placehold.co/310x420/f5f5f5/d0d0d0?text=Dashboard" alt="Dashboard UI" class="w-full">
-        </div>
-
-        <!-- Mockup center (tallest/prominent) -->
-        <div class="w-[175px] bg-white border border-border rounded-xl overflow-hidden shadow-md flex-shrink-0">
-          <div class="browser-chrome">
-            <div class="browser-dot bg-[#ff5f57]"></div>
-            <div class="browser-dot bg-[#febc2e]"></div>
-            <div class="browser-dot bg-[#28c840]"></div>
-          </div>
-          <img src="https://placehold.co/350x480/f0f0f0/c8c8c8?text=Mobile+App" alt="Mobile App UI" class="w-full">
-        </div>
-
-        <!-- Mockup right -->
-        <div class="w-[155px] bg-white border border-border rounded-xl overflow-hidden shadow-sm mt-14 flex-shrink-0">
-          <div class="browser-chrome">
-            <div class="browser-dot bg-[#ff5f57]"></div>
-            <div class="browser-dot bg-[#febc2e]"></div>
-            <div class="browser-dot bg-[#28c840]"></div>
-          </div>
-          <img src="https://placehold.co/310x420/f8f8f8/d4d4d4?text=Landing+Page" alt="Landing Page" class="w-full">
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       CLIENT LOGOS — STATIC 2-ROW GRID
-  ════════════════════════════════════════ -->
-  <div class="border-y border-border bg-white py-5">
-    <div class="max-w-[1216px] mx-auto px-6">
-      <!-- Row 1 -->
-      <div class="flex items-center justify-between mb-3">
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">TechFlow</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">GrowthLab</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Launchpad Co.</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">NovaBrand</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Apex Digital</span>
-      </div>
-      <!-- Divider -->
-      <div class="border-t border-border mb-3"></div>
-      <!-- Row 2 -->
-      <div class="flex items-center justify-between">
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Meridian</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">PulseWorks</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Stackr</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Folio</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Driftline</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Crestview</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Zenly</span>
-      </div>
-      <!-- Count -->
-      <p class="text-[10px] text-mid-gray mt-3">Trusted by 12+ growing brands</p>
-    </div>
-  </div>
-
-
-  <!-- ═══════════════════════════════════════
-       SERVICES — ONE TEAM, FULL STACK
-  ════════════════════════════════════════ -->
-  <section class="max-w-[1216px] mx-auto px-6 py-20">
-
-    <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">What we do</p>
-    <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-10">Solutions That Scale With Your Ambitions</h2>
-
-    <!-- 3-col service grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-      <!-- Custom Websites -->
-      <div class="card-hover bg-white border border-border rounded-xl p-5">
-        <div class="w-9 h-9 rounded-lg bg-[#ebf9f3] flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b25e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
-        </div>
-        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">Custom Websites</h3>
-        <p class="text-[12px] text-mid-gray leading-relaxed">Bespoke, high-converting websites built to represent your brand and capture leads.</p>
-      </div>
-
-      <!-- E-Commerce Solutions -->
-      <div class="card-hover bg-white border border-border rounded-xl p-5">
-        <div class="w-9 h-9 rounded-lg bg-[#ebf9f3] flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b25e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        </div>
-        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">E-Commerce Solutions</h3>
-        <p class="text-[12px] text-mid-gray leading-relaxed">Full-featured online stores that drive sales and deliver seamless shopping experiences.</p>
-      </div>
-
-      <!-- SEO Optimization -->
-      <div class="card-hover bg-white border border-border rounded-xl p-5">
-        <div class="w-9 h-9 rounded-lg bg-[#ebf9f3] flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b25e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">SEO Optimization</h3>
-        <p class="text-[12px] text-mid-gray leading-relaxed">Data-driven SEO strategies that improve your rankings and bring organic traffic to your site.</p>
-      </div>
-
-      <!-- UX/UI Design -->
-      <div class="card-hover bg-white border border-border rounded-xl p-5">
-        <div class="w-9 h-9 rounded-lg bg-[#ebf9f3] flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b25e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">UX/UI Design</h3>
-        <p class="text-[12px] text-mid-gray leading-relaxed">User-centered design that makes your digital products intuitive, beautiful, and effective.</p>
-      </div>
-
-      <!-- Website Maintenance -->
-      <div class="card-hover bg-white border border-border rounded-xl p-5">
-        <div class="w-9 h-9 rounded-lg bg-[#ebf9f3] flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b25e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">Website Maintenance</h3>
-        <p class="text-[12px] text-mid-gray leading-relaxed">Ongoing support to keep your site fast, secure, updated, and performing at its best.</p>
-      </div>
-
-      <!-- Custom Product Design -->
-      <div class="card-hover bg-white border border-border rounded-xl p-5">
-        <div class="w-9 h-9 rounded-lg bg-[#ebf9f3] flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b25e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </div>
-        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">Custom Product Design</h3>
-        <p class="text-[12px] text-mid-gray leading-relaxed">Tailored digital product experiences built from the ground up for your unique use case.</p>
-      </div>
-
-    </div>
-
-    <!-- Tool/stack brand icons row -->
-    <div class="mt-8 flex flex-wrap gap-7 items-center opacity-40">
-
-      <!-- Figma -->
-      <svg height="18" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5z" fill="#1abcfe"/><path d="M9.5 47.5A9.5 9.5 0 0 1 19 38v9.5A9.5 9.5 0 0 1 9.5 47.5z" fill="#0acf83"/><path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19z" fill="#ff7262"/><path d="M0 9.5A9.5 9.5 0 0 1 9.5 0H19v19H9.5A9.5 9.5 0 0 1 0 9.5z" fill="#f24e1e"/><path d="M0 28.5A9.5 9.5 0 0 1 9.5 19H19v19H9.5A9.5 9.5 0 0 1 0 28.5z" fill="#a259ff"/></svg>
-
-      <!-- X / Twitter -->
-      <svg height="16" viewBox="0 0 24 24" fill="#000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-
-      <!-- Framer -->
-      <svg height="18" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h14v7H7L0 0z" fill="#000"/><path d="M0 7h7l7 7H7v7L0 7z" fill="#000"/></svg>
-
-      <!-- GitHub -->
-      <svg height="18" viewBox="0 0 24 24" fill="#000"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.528 2.341 1.087 2.91.831.091-.645.349-1.087.635-1.337-2.22-.252-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-
-      <!-- Notion -->
-      <svg height="18" viewBox="0 0 24 24" fill="#000"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.212-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.373-1.54 1.447-1.632z"/></svg>
-
-      <!-- Linear (L icon) -->
-      <svg height="18" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857l37.3091 37.3091c.6893.6893.0919 1.8218-.857 1.5993C19.2052 94.4522 5.54788 80.7949 1.22541 61.5228zM.00189135 46.8891c-.01764.3818.13681.7503.42058 1.0341l51.6766 51.6765c.2838.2838.6523.4382 1.0341.4206 2.6102-.1207 5.1472-.4688 7.5921-.9986.1841-.0394.3541-.1361.4896-.2717L4.13070 52.3914c-.13563.1355-.23230.3055-.27165.4896-.52988 2.4449-.87800 4.9819-.99763 7.5921zM4.60481 32.4948c-.16899.2935-.1408.6631.08118.9285l62.0903 62.0903c.2654.2654.6349.2947.9285.0818 1.8757-1.1007 3.6843-2.3351 5.4082-3.7012.1552-.1213.2733-.2881.338-.4789L8.30604 27.0867c-.19080.0647-.35764.1828-.47885.3380-1.36612 1.7239-2.60052 3.5325-3.70138 5.4082zM11.8944 23.2097c-.2678.2123-.3059.5978-.0861.8591l64.1331 64.1330c.2613.2199.6468.1818.8591-.086 1.6724-2.1107 3.1647-4.3659 4.4504-6.7378.1118-.2083.1012-.4615-.0277-.6596L18.6320 18.7593c-.1981-.1289-.4513-.1395-.6596-.0277-2.3719 1.2857-4.6271 2.7780-6.7378 4.4504zM23.8960 15.1905l-.0001-.0001c-.3264.1814-.4075.6025-.1653.8899l60.1302 60.1301c.2874.2422.7085.1611.8899-.1653 1.4095-2.5382 2.6119-5.1998 3.5854-7.9659.0706-.2035.0378-.4262-.0849-.6011L32.4616 11.6051c-.1749-.1227-.3976-.1555-.6011-.0849-2.7661.9736-5.4277 2.1759-7.9659 3.5854zM38.5591 9.14997c-.2009.1127-.3288.3158-.3441.5465l51.6705 51.6705c.2307-.0153.4338-.1432.5465-.3441C96.8265 49.9921 100 41.3523 100 32.0003 100 14.3268 85.6734 0 68 0c-9.3520 0-17.9918 3.17352-24.806 8.60297-.1372.1093-.5257.3709-.6349.547z" fill="#5E6AD2"/></svg>
-
-      <!-- Slack -->
-      <svg height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#E01E5A"/></svg>
-
-      <!-- Webflow text-mark approximation -->
-      <svg height="12" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" font-family="Arial,sans-serif" font-weight="700" font-size="22" fill="#4353FF">W</text></svg>
-
-    </div>
-
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       HOW DOES IT WORK
-  ════════════════════════════════════════ -->
-  <section class="border-t border-border">
-    <div class="max-w-[1216px] mx-auto px-6 py-20">
-
-      <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">Our process</p>
-      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-12">Our Proven Process</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <!-- Step 01 -->
-        <div>
-          <div class="bg-bg-light rounded-xl overflow-hidden mb-5">
-            <img src="https://placehold.co/540x300/eeeeee/cccccc?text=Get+to+Know+Your+Vision" alt="Get to Know Your Vision" class="w-full h-48 object-cover">
-          </div>
-          <p class="text-[11px] text-mid-gray mb-1.5">Step <span class="font-semibold text-near-black">01</span></p>
-          <h3 class="text-[14px] font-semibold text-near-black mb-2">Get to Know Your Vision</h3>
-          <p class="text-[12px] text-mid-gray leading-relaxed">We start by understanding your goals, audience, and what success looks like for your business.</p>
-        </div>
-
-        <!-- Step 02 -->
-        <div>
-          <div class="bg-bg-light rounded-xl overflow-hidden mb-5">
-            <img src="https://placehold.co/540x300/eeeeee/cccccc?text=Building+the+Final+Product" alt="Building the Final Product" class="w-full h-48 object-cover">
-          </div>
-          <p class="text-[11px] text-mid-gray mb-1.5">Step <span class="font-semibold text-near-black">02</span></p>
-          <h3 class="text-[14px] font-semibold text-near-black mb-2">Building the Final Product</h3>
-          <p class="text-[12px] text-mid-gray leading-relaxed">Our team designs and develops your site with precision, keeping you in the loop every step of the way.</p>
-        </div>
-
-        <!-- Step 03 -->
-        <div>
-          <div class="bg-bg-light rounded-xl overflow-hidden mb-5">
-            <img src="https://placehold.co/540x300/eeeeee/cccccc?text=Handoff+and+Training" alt="Handoff and Training" class="w-full h-48 object-cover">
-          </div>
-          <p class="text-[11px] text-mid-gray mb-1.5">Step <span class="font-semibold text-near-black">03</span></p>
-          <h3 class="text-[14px] font-semibold text-near-black mb-2">Handoff and Training</h3>
-          <p class="text-[12px] text-mid-gray leading-relaxed">We deliver your finished product with full training so you can manage and grow it with confidence.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       TESTIMONIALS / SOCIAL PROOF
-  ════════════════════════════════════════ -->
-  <section class="border-t border-border">
-    <div class="max-w-[1216px] mx-auto px-6 py-20">
-
-      <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-3">Our numbers speak</p>
-      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-3 max-w-md">
-        Results That Speak for Themselves
-      </h2>
-      <p class="text-[13px] text-mid-gray mb-10 max-w-sm">See how founders partner with Social Swarm to grow faster and build better.</p>
-
-      <!-- Testimonial card -->
-      <div class="bg-white border border-border rounded-2xl p-7 max-w-[560px] mb-10 relative">
-        <!-- Gold badge -->
-        <div class="absolute top-5 right-5 w-9 h-9 rounded-full bg-amber-400 flex items-center justify-center shadow-sm">
-          <svg class="w-4 h-4 text-white" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <p class="text-[13px] text-near-black leading-[1.75] mb-6">
-          "Working with Collin and the Social Swarm team has been a <strong>game-changer for our business</strong>.
-          Their attention to detail, speed of delivery, and ability to understand our vision set them apart.
-          We keep coming back because <strong>the results speak for themselves</strong>."
-        </p>
-
-        <div class="flex items-center gap-3">
-          <img src="https://placehold.co/36x36/e0e0e0/999?text=SS" alt="Satisfied Client" class="w-9 h-9 rounded-full object-cover">
-          <div>
-            <p class="text-[12px] font-semibold text-near-black">Sarah M.</p>
-            <p class="text-[11px] text-mid-gray">Founder & CEO, Repeat Client</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Logo bar -->
-      <div class="flex flex-wrap gap-7 items-center">
-        <span class="text-[12px] font-semibold text-[#b0b6bf]">TechFlow</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf]">GrowthLab</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf]">Launchpad Co.</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf]">NovaBrand</span>
-        <span class="text-[12px] font-semibold text-[#b0b6bf]">Apex Digital</span>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       FAQ
-  ════════════════════════════════════════ -->
-  <section class="border-t border-border">
-    <div class="max-w-[1216px] mx-auto px-6 py-20">
-      <div class="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-14">
-
-        <!-- Left -->
-        <div>
-          <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">Got questions?</p>
-          <h2 class="text-[24px] font-bold tracking-[-0.025em] text-near-black mb-6">Read the FAQs</h2>
-
-          <!-- Avatar card -->
-          <div class="bg-bg-light rounded-xl p-5 max-w-[260px]">
-            <div class="flex items-center mb-3">
-              <img src="https://placehold.co/34x34/d0d0d0/888?text=A1" alt="Founder 1" class="w-8 h-8 rounded-full object-cover">
-              <img src="https://placehold.co/34x34/c0c0c0/777?text=A2" alt="Founder 2" class="w-8 h-8 rounded-full object-cover -ml-2.5">
-            </div>
-            <p class="text-[12px] font-semibold text-near-black mb-1">Can't find your answer?</p>
-            <p class="text-[11px] text-mid-gray leading-relaxed mb-3">Book a call with Collin to discuss your project needs.</p>
-            <button class="text-[11px] bg-black text-white px-3 py-1.5 rounded-full font-medium">Book a call →</button>
-          </div>
-
-          <p class="text-[11px] text-mid-gray mt-4">or send us an <a href="#" class="underline hover:text-near-black">email message</a></p>
-        </div>
-
-        <!-- Right: accordion -->
-        <div>
-          <div class="divide-y divide-border">
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">How long does it take to build a website?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Most custom websites are completed in 4–8 weeks depending on scope and complexity. We'll give you a clear timeline upfront.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">Will my website be mobile responsive?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Absolutely. Every site we build is fully responsive and optimized for mobile, tablet, and desktop from the ground up.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">How long does SEO take to show results?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">SEO is a long-term strategy. Most clients begin seeing meaningful improvements in rankings and traffic within 3–6 months.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">Do you offer website maintenance after launch?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Yes. We offer ongoing maintenance plans that cover updates, security, performance monitoring, and content changes.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">What's included in an e-commerce solution?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We build fully custom stores with product pages, checkout flows, payment integrations, and inventory management tailored to your brand.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">Do I need to provide all the content and copy?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Not necessarily. We can work with your existing content or help craft compelling copy that aligns with your brand voice.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">What platforms do you build on?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We build on WordPress, Webflow, Shopify, and fully custom-coded solutions — whatever best fits your goals and budget.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">Can I update the website myself after it's built?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Yes. We include training so you're confident managing your site. We build with user-friendly CMS tools that don't require technical skills.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">What makes Social Swarm different from other agencies?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We're founder-focused and move at your speed. No bloated teams, no endless meetings — just high-quality work delivered fast with direct communication.</div>
-            </div>
-
-            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
-              <div class="flex items-center justify-between gap-4">
-                <span class="text-[13px] font-medium text-near-black">Do you offer ongoing support after the project is complete?</span>
-                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Yes. We offer flexible retainer packages for ongoing support, whether that's monthly updates, SEO, or new feature development.</div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       PORTFOLIO — PRODUCTS WE'VE SHIPPED
-  ════════════════════════════════════════ -->
-  <section class="border-t border-border">
-    <div class="max-w-[1216px] mx-auto px-6 py-20">
-
-      <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">Portfolio</p>
-      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-10">Real Results. Real Stories.</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-        <!-- Project 1 -->
-        <div class="card-hover bg-white border border-border rounded-xl overflow-hidden">
-          <img src="https://placehold.co/680x380/f0f0f0/c8c8c8?text=TechFlow+Rebrand" alt="TechFlow Rebrand" class="w-full aspect-video object-cover">
-          <div class="px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
-              <span>TechFlow</span><span class="text-border-md">|</span>
-              <span>Custom Website</span><span class="text-border-md">|</span>
-              <span>SEO</span><span class="text-border-md">|</span>
-              <span>Brand</span>
-            </div>
-            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
-          </div>
-        </div>
-
-        <!-- Project 2 — orange tint -->
-        <div class="card-hover border border-border rounded-xl overflow-hidden">
-          <img src="https://placehold.co/680x380/fff0e8/f0a070?text=GrowthLab+Store" alt="GrowthLab Store" class="w-full aspect-video object-cover">
-          <div class="px-4 py-3 flex items-center justify-between bg-white">
-            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
-              <span>GrowthLab</span><span class="text-border-md">|</span>
-              <span>E-Commerce</span><span class="text-border-md">|</span>
-              <span>UX/UI</span><span class="text-border-md">|</span>
-              <span>Design</span>
-            </div>
-            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="card-hover bg-white border border-border rounded-xl overflow-hidden">
-          <img src="https://placehold.co/680x380/f5f5f5/cccccc?text=NovaBrand+Launch" alt="NovaBrand Launch" class="w-full aspect-video object-cover">
-          <div class="px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
-              <span>NovaBrand</span><span class="text-border-md">|</span>
-              <span>Custom Website</span><span class="text-border-md">|</span>
-              <span>SEO</span><span class="text-border-md">|</span>
-              <span>Maintenance</span>
-            </div>
-            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
-          </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="card-hover bg-white border border-border rounded-xl overflow-hidden">
-          <img src="https://placehold.co/680x380/f5f5f5/cccccc?text=Apex+Digital+Product" alt="Apex Digital Product" class="w-full aspect-video object-cover">
-          <div class="px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
-              <span>Apex Digital</span><span class="text-border-md">|</span>
-              <span>Product Design</span><span class="text-border-md">|</span>
-              <span>UX/UI</span><span class="text-border-md">|</span>
-              <span>Dev</span>
-            </div>
-            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       STATS + FINAL CTA
-  ════════════════════════════════════════ -->
-  <section class="border-t border-border">
-    <div class="max-w-[1216px] mx-auto px-6 py-20">
-
-      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-3">
-        Let's Build Something
-      </h2>
-      <p class="text-[13px] text-mid-gray mb-10 max-w-sm">Your growth is our goal. Real results from real founders who trusted Social Swarm to deliver.</p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
-
-        <!-- Stat 1 -->
-        <div class="bg-white border border-border rounded-xl p-6">
-          <div class="inline-flex items-center gap-1.5 bg-[#ebf9f3] rounded-full px-2.5 py-1 mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-            <span class="text-[10px] font-semibold text-brand tracking-wide">Revenue Driven</span>
-          </div>
-          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">$9M+</div>
-          <div class="text-[13px] text-mid-gray mb-3">generated for our clients</div>
-          <p class="text-[11px] text-mid-gray leading-relaxed">Our websites and digital solutions have directly contributed to millions in revenue for the founders we serve.</p>
-        </div>
-
-        <!-- Stat 2 -->
-        <div class="bg-white border border-border rounded-xl p-6">
-          <div class="inline-flex items-center gap-1.5 bg-[#ebf9f3] rounded-full px-2.5 py-1 mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-            <span class="text-[10px] font-semibold text-brand tracking-wide">Traffic Growth</span>
-          </div>
-          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">+50%</div>
-          <div class="text-[13px] text-mid-gray mb-3">average organic traffic increase</div>
-          <p class="text-[11px] text-mid-gray leading-relaxed">Our SEO and web strategies consistently drive significant increases in organic traffic and qualified leads.</p>
-        </div>
-
-        <!-- Stat 3 -->
-        <div class="bg-white border border-border rounded-xl p-6">
-          <div class="inline-flex items-center gap-1.5 bg-[#ebf9f3] rounded-full px-2.5 py-1 mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-            <span class="text-[10px] font-semibold text-brand tracking-wide">Conversion Lift</span>
-          </div>
-          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">3X</div>
-          <div class="text-[13px] text-mid-gray mb-3">average conversion rate improvement</div>
-          <p class="text-[11px] text-mid-gray leading-relaxed">By combining great design with strategic UX, we triple the conversion rates for the businesses we work with.</p>
-        </div>
-
-        <!-- Stat 4 -->
-        <div class="bg-white border border-border rounded-xl p-6">
-          <div class="inline-flex items-center gap-1.5 bg-[#ebf9f3] rounded-full px-2.5 py-1 mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
-            <span class="text-[10px] font-semibold text-brand tracking-wide">Fast Delivery</span>
-          </div>
-          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">4–8</div>
-          <div class="text-[13px] text-mid-gray mb-3">weeks average project delivery</div>
-          <p class="text-[11px] text-mid-gray leading-relaxed">We move at founder speed. Most projects launch in weeks, not months, so you start seeing results sooner.</p>
-        </div>
-
-      </div>
-
-      <!-- CTA buttons -->
-      <div class="flex flex-wrap gap-3">
-        <button class="bg-near-black text-white text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-black transition-colors">
-          Book a Call
-        </button>
-        <button class="border border-border text-near-black text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-bg-light transition-colors">
-          View Our Work
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════ -->
-  <footer class="border-t border-border bg-white">
-    <div class="max-w-[1216px] mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-      <div>
-        <div class="text-sm font-bold tracking-[-0.03em] mb-1">Social Swarm</div>
-        <p class="text-[11px] text-mid-gray">© 2025 Social Swarm. All rights reserved.</p>
-      </div>
-      <nav class="flex flex-wrap gap-5 text-[12px] text-mid-gray">
-        <a href="#" class="hover:text-near-black transition-colors">Services</a>
-        <a href="#" class="hover:text-near-black transition-colors">Our Work</a>
-        <a href="#" class="hover:text-near-black transition-colors">Resources</a>
-        <a href="#" class="hover:text-near-black transition-colors">Blog</a>
-        <a href="#" class="hover:text-near-black transition-colors">Privacy</a>
+<body>
+  <div class="max-w-[1120px] mx-auto px-4 sm:px-6 border-x border-line bg-[#f5f5f6]">
+    <header class="h-12 border-b border-line flex items-center justify-between text-[10px]">
+      <div class="font-extrabold tracking-tight">SOCIALSWARM</div>
+      <nav class="hidden md:flex items-center gap-7 text-soft font-medium">
+        <a href="#" class="hover:text-ink">Services</a>
+        <a href="#" class="hover:text-ink">Portfolio</a>
+        <a href="#" class="hover:text-ink">Testimonials</a>
+        <a href="#" class="hover:text-ink">FAQs</a>
       </nav>
-    </div>
-  </footer>
+      <a href="#" class="text-ink font-semibold">Let's talk</a>
+    </header>
 
+    <main>
+      <section class="pt-14 sm:pt-20 pb-10 sm:pb-12 text-center border-b border-line">
+        <h1 class="max-w-[700px] mx-auto text-[34px] sm:text-[62px] leading-[0.98] tracking-[-0.045em] font-extrabold">
+          Design + websites for funded B2B tech companies
+        </h1>
+        <p class="max-w-[520px] mx-auto mt-4 text-[11px] sm:text-[13px] leading-relaxed text-soft">
+          We design and build products, websites, and tools at startup speed. Focus on growth while we ship your next version.
+        </p>
+        <button class="mt-6 bg-accent text-white text-[11px] font-semibold px-4.5 py-2.5 rounded-md hover:opacity-90 transition">
+          Book a strategy call
+        </button>
+
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-3.5 items-end">
+          <article class="mock-frame rounded-2xl h-36 sm:h-44 md:h-48 p-3 text-left">
+            <div class="h-2 w-16 bg-line rounded mb-3"></div>
+            <div class="grid grid-cols-3 gap-1.5">
+              <div class="h-8 bg-white border border-line rounded"></div>
+              <div class="h-8 bg-white border border-line rounded"></div>
+              <div class="h-8 bg-white border border-line rounded"></div>
+              <div class="h-8 bg-white border border-line rounded"></div>
+              <div class="h-8 bg-white border border-line rounded"></div>
+              <div class="h-8 bg-white border border-line rounded"></div>
+            </div>
+          </article>
+          <article class="mock-frame rounded-2xl h-44 sm:h-52 md:h-60 p-3 text-left">
+            <div class="h-2 w-20 bg-line rounded mb-3"></div>
+            <div class="h-24 bg-white border border-line rounded-lg mb-2"></div>
+            <div class="h-3 w-2/3 bg-line rounded mb-1.5"></div>
+            <div class="h-3 w-1/2 bg-line rounded"></div>
+            <div class="mt-3 h-8 bg-coral rounded-md"></div>
+          </article>
+          <article class="mock-frame rounded-2xl h-44 sm:h-52 md:h-60 p-3 text-left">
+            <div class="h-2 w-14 bg-line rounded mb-3"></div>
+            <div class="h-20 bg-white border border-line rounded-lg mb-2"></div>
+            <div class="h-3 w-1/2 bg-line rounded mb-1.5"></div>
+            <div class="h-3 w-2/3 bg-line rounded"></div>
+            <div class="mt-3 h-8 bg-blue-500 rounded-md"></div>
+          </article>
+          <article class="mock-frame rounded-2xl h-32 sm:h-40 md:h-44 p-3 text-left hidden md:block">
+            <div class="h-2 w-12 bg-line rounded mb-3"></div>
+            <div class="h-24 bg-white border border-line rounded-lg"></div>
+          </article>
+        </div>
+
+        <div class="mt-8 pt-5 border-t border-line">
+          <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 gap-y-3 text-[10px] font-semibold text-[#9ca0a8]">
+            <span>Lightdash</span><span>N3XT</span><span>DotWiz</span><span>Qubit</span><span>Vercel</span>
+            <span>Loom</span><span>Railboy</span><span>Razor</span><span>Ethero</span><span>Syntal</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-14 sm:py-16 border-b border-line">
+        <h2 class="text-center text-[30px] sm:text-[42px] tracking-[-0.03em] font-bold mb-8">One team, full stack</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div class="bg-white border border-line rounded-2xl px-3 py-6 text-center">
+            <p class="text-coral text-[10px] font-semibold">01</p><p class="mt-2 text-[12px]">MVP &amp; product design</p>
+          </div>
+          <div class="bg-white border border-line rounded-2xl px-3 py-6 text-center">
+            <p class="text-coral text-[10px] font-semibold">02</p><p class="mt-2 text-[12px]">Custom product development</p>
+          </div>
+          <div class="bg-white border border-line rounded-2xl px-3 py-6 text-center">
+            <p class="text-coral text-[10px] font-semibold">03</p><p class="mt-2 text-[12px]">Website design &amp; dev</p>
+          </div>
+          <div class="bg-white border border-line rounded-2xl px-3 py-6 text-center">
+            <p class="text-coral text-[10px] font-semibold">04</p><p class="mt-2 text-[12px]">Brand identity</p>
+          </div>
+          <div class="bg-white border border-line rounded-2xl px-3 py-6 text-center">
+            <p class="text-coral text-[10px] font-semibold">05</p><p class="mt-2 text-[12px]">3D design &amp; motion</p>
+          </div>
+          <div class="bg-white border border-line rounded-2xl px-3 py-6 text-center">
+            <p class="text-coral text-[10px] font-semibold">06</p><p class="mt-2 text-[12px]">Tech stack &amp; editorial</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-5 text-[11px] text-soft">
+          <span>Figma</span><span>Webflow</span><span>Framer</span><span>React</span><span>Next.js</span><span>Supabase</span><span>Node</span><span>Vercel</span>
+        </div>
+      </section>
+
+      <section class="py-14 sm:py-16 border-b border-line">
+        <p class="text-center text-[10px] font-semibold tracking-[0.2em] text-soft uppercase">Built in days</p>
+        <h2 class="text-center text-[30px] sm:text-[42px] tracking-[-0.03em] font-bold mt-2 mb-8">How does it work?</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <article class="bg-white border border-line rounded-2xl p-3">
+            <img src="https://placehold.co/640x360/e7e7ea/b9bcc4?text=Kickoff+Call" alt="Kickoff" class="w-full rounded-lg mb-3">
+            <p class="text-[10px] text-coral font-semibold">Step 01</p>
+            <p class="mt-1 text-[13px] font-semibold">Book a 15-min intro call</p>
+            <p class="mt-1 text-[12px] text-soft">We align on scope, outcomes, and timeline.</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-3">
+            <img src="https://placehold.co/640x360/e7e7ea/b9bcc4?text=Weekly+Sprints" alt="Sprints" class="w-full rounded-lg mb-3">
+            <p class="text-[10px] text-coral font-semibold">Step 02</p>
+            <p class="mt-1 text-[13px] font-semibold">Your project kicks off</p>
+            <p class="mt-1 text-[12px] text-soft">You get async updates and direct feedback loops.</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-3">
+            <img src="https://placehold.co/640x360/e7e7ea/b9bcc4?text=Launch" alt="Launch" class="w-full rounded-lg mb-3">
+            <p class="text-[10px] text-coral font-semibold">Step 03</p>
+            <p class="mt-1 text-[13px] font-semibold">You start seeing wins</p>
+            <p class="mt-1 text-[12px] text-soft">Launch fast and iterate with confidence.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="py-14 sm:py-16 border-b border-line">
+        <h2 class="text-center text-[31px] sm:text-[46px] tracking-[-0.03em] font-bold max-w-[760px] mx-auto">
+          We've helped 100+ companies design, ship, and raise.
+        </h2>
+        <div class="max-w-[860px] mx-auto mt-8 bg-white border border-line rounded-2xl p-6 sm:p-8 shadow-card">
+          <div class="inline-flex items-center gap-2 text-[10px] font-semibold bg-[#ebffe2] text-[#2c8b39] px-2.5 py-1 rounded-full">Rated 5.0 by growth-stage teams</div>
+          <p class="mt-4 text-[14px] sm:text-[16px] leading-relaxed max-w-[640px]">
+            "Designwave became our full-stack product partner and executed complex projects with high iteration speed. The efficiency, craft, and communication made them feel like our internal team."
+          </p>
+          <div class="mt-4 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#ffd77a] to-[#ff9f1a]"></div>
+            <div>
+              <p class="text-[12px] font-semibold">Sebi Grigorev</p>
+              <p class="text-[11px] text-soft">CEO, Lightdash</p>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-line grid grid-cols-2 sm:grid-cols-5 text-[11px] font-medium text-soft gap-3">
+            <span>Lightdash</span><span>RocstarQ</span><span>Seedwell AI</span><span>N3XT</span><span class="text-ink">DoWiz</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-14 sm:py-16 border-b border-line" id="faqs">
+        <div class="grid lg:grid-cols-[290px_1fr] gap-6 items-start">
+          <aside class="bg-white border border-line rounded-2xl p-5">
+            <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-soft">Need support?</p>
+            <h3 class="mt-2 text-[26px] tracking-[-0.03em] font-bold">Read the FAQs</h3>
+            <div class="mt-5 p-4 rounded-xl bg-panel border border-line">
+              <p class="text-[12px] font-semibold">Can't find your answer?</p>
+              <p class="text-[12px] text-soft mt-1">Book a call and we'll review your project scope with you.</p>
+              <button class="mt-3 bg-accent text-white text-[12px] px-3.5 py-2 rounded-md font-semibold">Book a strategy call</button>
+              <p class="mt-2 text-[11px] text-soft">or email us at hello@socialswarm.com</p>
+            </div>
+          </aside>
+
+          <div class="bg-white border border-line rounded-2xl divide-y divide-line">
+            <button class="faq-item w-full text-left p-4 sm:p-5 faq-open" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-[13px] font-medium">How soon can you start?</span>
+                <span class="faq-plus text-soft text-xl leading-none">+</span>
+              </div>
+              <p class="faq-answer text-[12px] text-soft pt-2">We can typically start within 3-5 business days after the kickoff call.</p>
+            </button>
+            <button class="faq-item w-full text-left p-4 sm:p-5" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-[13px] font-medium">What happens if my project scope changes mid-way?</span>
+                <span class="faq-plus text-soft text-xl leading-none">+</span>
+              </div>
+              <p class="faq-answer text-[12px] text-soft pt-2">We work in sprints, so scope updates are easy to prioritize and schedule.</p>
+            </button>
+            <button class="faq-item w-full text-left p-4 sm:p-5" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-[13px] font-medium">How many people work on my project?</span>
+                <span class="faq-plus text-soft text-xl leading-none">+</span>
+              </div>
+              <p class="faq-answer text-[12px] text-soft pt-2">A compact senior team handles strategy, design, and engineering.</p>
+            </button>
+            <button class="faq-item w-full text-left p-4 sm:p-5" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-[13px] font-medium">Can you collaborate with our in-house team?</span>
+                <span class="faq-plus text-soft text-xl leading-none">+</span>
+              </div>
+              <p class="faq-answer text-[12px] text-soft pt-2">Yes. We plug directly into your existing product and marketing workflows.</p>
+            </button>
+            <button class="faq-item w-full text-left p-4 sm:p-5" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-[13px] font-medium">Do you handle branding, product, and website work?</span>
+                <span class="faq-plus text-soft text-xl leading-none">+</span>
+              </div>
+              <p class="faq-answer text-[12px] text-soft pt-2">Yes, we can own end-to-end execution across all three streams.</p>
+            </button>
+            <button class="faq-item w-full text-left p-4 sm:p-5" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-[13px] font-medium">What if I need fast turnaround?</span>
+                <span class="faq-plus text-soft text-xl leading-none">+</span>
+              </div>
+              <p class="faq-answer text-[12px] text-soft pt-2">Fast delivery is our default: we optimize for weekly outcomes, not long handoffs.</p>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-14 sm:py-16 border-b border-line">
+        <p class="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-soft">Recent work</p>
+        <h2 class="text-center text-[30px] sm:text-[42px] tracking-[-0.03em] font-bold mt-2 mb-8">Products we've shipped</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <article class="bg-white border border-line rounded-2xl p-3 sm:p-4">
+            <img src="https://placehold.co/760x420/f4f4f6/bfc3cb?text=Dashboard+System" alt="Dashboard project" class="rounded-lg w-full mb-3">
+            <p class="text-[10px] uppercase tracking-[0.14em] text-soft">B2B | SaaS | Product | From $14K</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-3 sm:p-4">
+            <img src="https://placehold.co/760x420/f4f4f6/bfc3cb?text=Brand+Website" alt="Website project" class="rounded-lg w-full mb-3">
+            <p class="text-[10px] uppercase tracking-[0.14em] text-soft">Web | Brand | React | From $9K</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-3 sm:p-4">
+            <img src="https://placehold.co/760x420/f4f4f6/bfc3cb?text=Sales+Portal" alt="Portal project" class="rounded-lg w-full mb-3">
+            <p class="text-[10px] uppercase tracking-[0.14em] text-soft">SaaS | Growth | Next.js | From $12K</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-3 sm:p-4">
+            <img src="https://placehold.co/760x420/f4f4f6/bfc3cb?text=Data+Platform" alt="Data platform project" class="rounded-lg w-full mb-3">
+            <p class="text-[10px] uppercase tracking-[0.14em] text-soft">B2B | Data | Product | From $16K</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="py-14 sm:py-16 border-b border-line">
+        <p class="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-soft">Execution speed</p>
+        <h2 class="text-center text-[31px] sm:text-[46px] tracking-[-0.03em] font-bold mt-2 mb-8">Stop waiting on design. Start shipping.</h2>
+        <div class="grid sm:grid-cols-2 gap-4 max-w-[920px] mx-auto">
+          <article class="bg-white border border-line rounded-2xl p-6 text-center">
+            <span class="inline-flex text-[10px] px-2 py-1 rounded-full bg-[#edfff2] text-[#2f9641] font-semibold">MVP Focused</span>
+            <p class="mt-4 text-[32px] tracking-tight font-extrabold">+30%</p>
+            <p class="text-[13px] mt-1">average demo conversion</p>
+            <p class="text-[12px] text-soft mt-1">Better clarity, cleaner UX, faster sales motion.</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-6 text-center">
+            <span class="inline-flex text-[10px] px-2 py-1 rounded-full bg-[#fff2ed] text-[#bd4c2f] font-semibold">Partnership Model</span>
+            <p class="mt-4 text-[32px] tracking-tight font-extrabold">6+ months</p>
+            <p class="text-[13px] mt-1">average engagement</p>
+            <p class="text-[12px] text-soft mt-1">We become an extension of your core team.</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-6 text-center">
+            <span class="inline-flex text-[10px] px-2 py-1 rounded-full bg-[#fff8e9] text-[#9a6d10] font-semibold">Startup Friendly</span>
+            <p class="mt-4 text-[32px] tracking-tight font-extrabold">65+ startups</p>
+            <p class="text-[13px] mt-1">Seed to Series A</p>
+            <p class="text-[12px] text-soft mt-1">Execution calibrated for early-stage growth.</p>
+          </article>
+          <article class="bg-white border border-line rounded-2xl p-6 text-center">
+            <span class="inline-flex text-[10px] px-2 py-1 rounded-full bg-[#f2f3ff] text-[#4f58c8] font-semibold">Startup Speed</span>
+            <p class="mt-4 text-[32px] tracking-tight font-extrabold">4-8 weeks</p>
+            <p class="text-[13px] mt-1">average delivery</p>
+            <p class="text-[12px] text-soft mt-1">From brief to live launch with async updates.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="h-16 text-[11px] text-soft flex items-center justify-between">
+      <p>Social Swarm Studio</p>
+      <p class="hidden sm:block">Made for B2B founders</p>
+      <p>hello@socialswarm.com</p>
+    </footer>
+  </div>
 </body>
 </html>
