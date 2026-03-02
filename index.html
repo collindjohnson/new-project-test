@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DESIGNMINE – Design + websites for funded B2B tech companies</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:        '#ff4f17',
+            'near-black': '#171717',
+            'dark-gray':  '#3d3d3d',
+            'mid-gray':   '#7a7a7a',
+            'dim-gray':   '#5a5c61',
+            'border':     '#e5e5e5',
+            'border-md':  '#d5d9e3',
+            'bg-light':   '#f5f5f5',
+            'bg-page':    '#fafafa',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap" rel="stylesheet">
+
+  <style>
+    body { background-color: #fafafa; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* Marquee */
+    .marquee-wrap { overflow: hidden; }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* FAQ accordion */
+    .faq-answer { display: none; }
+    .faq-open .faq-answer { display: block; }
+    .faq-chevron { transition: transform 0.2s ease; }
+    .faq-open .faq-chevron { transform: rotate(180deg); }
+
+    /* Subtle card hover */
+    .card-hover { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+    .card-hover:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-1px); }
+
+    /* Browser chrome */
+    .browser-chrome {
+      height: 28px;
+      background: #f0f0f0;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 10px;
+      flex-shrink: 0;
+    }
+    .browser-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Pill tag */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #e5e5e5;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: #7a7a7a;
+      background: #fff;
+    }
+    .pill-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #ff4f17; flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body class="bg-bg-page text-near-black">
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════ -->
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+    <div class="max-w-[1216px] mx-auto px-6 h-14 flex items-center justify-between">
+
+      <!-- Logo -->
+      <div class="text-sm font-bold tracking-[-0.03em] leading-none select-none">DESIGNMINE</div>
+
+      <!-- Center links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">Services</a>
+        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">Process</a>
+        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">Testimonials</a>
+        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">FAQs</a>
+        <a href="#" class="text-[13px] text-dark-gray hover:text-near-black transition-colors">Work</a>
+      </div>
+
+      <!-- CTA -->
+      <button class="bg-near-black text-white text-[13px] font-medium px-4 py-2 rounded-full hover:bg-black transition-colors">
+        Let's talk
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section class="max-w-[1216px] mx-auto px-6 pt-16 pb-14">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 items-start">
+
+      <!-- Left: copy -->
+      <div class="pt-2">
+        <!-- Badge -->
+        <div class="pill mb-5">
+          <span class="pill-dot"></span>
+          Design Agency for B2B Tech Companies
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-[40px] lg:text-[48px] font-extrabold leading-[1.1] tracking-[-0.035em] text-near-black mb-4 max-w-[480px]">
+          Design + websites for funded B2B tech companies
+        </h1>
+
+        <!-- Sub-copy -->
+        <p class="text-[14px] text-mid-gray leading-[1.7] mb-8 max-w-[360px]">
+          We design and build products, websites, and brands for B2B tech companies. One team to design the deck, build the website, and more.
+        </p>
+
+        <!-- CTA -->
+        <button class="bg-near-black text-white text-[13px] font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors">
+          Book a strategy call
+        </button>
+      </div>
+
+      <!-- Right: stacked browser mockups -->
+      <div class="flex items-start justify-center gap-3 lg:justify-end">
+
+        <!-- Mockup left -->
+        <div class="w-[155px] bg-white border border-border rounded-xl overflow-hidden shadow-sm mt-8 flex-shrink-0">
+          <div class="browser-chrome">
+            <div class="browser-dot bg-[#ff5f57]"></div>
+            <div class="browser-dot bg-[#febc2e]"></div>
+            <div class="browser-dot bg-[#28c840]"></div>
+          </div>
+          <img src="https://placehold.co/310x420/f5f5f5/d0d0d0?text=Dashboard" alt="Dashboard UI" class="w-full">
+        </div>
+
+        <!-- Mockup center (tallest/prominent) -->
+        <div class="w-[175px] bg-white border border-border rounded-xl overflow-hidden shadow-md flex-shrink-0">
+          <div class="browser-chrome">
+            <div class="browser-dot bg-[#ff5f57]"></div>
+            <div class="browser-dot bg-[#febc2e]"></div>
+            <div class="browser-dot bg-[#28c840]"></div>
+          </div>
+          <img src="https://placehold.co/350x480/f0f0f0/c8c8c8?text=Mobile+App" alt="Mobile App UI" class="w-full">
+        </div>
+
+        <!-- Mockup right -->
+        <div class="w-[155px] bg-white border border-border rounded-xl overflow-hidden shadow-sm mt-14 flex-shrink-0">
+          <div class="browser-chrome">
+            <div class="browser-dot bg-[#ff5f57]"></div>
+            <div class="browser-dot bg-[#febc2e]"></div>
+            <div class="browser-dot bg-[#28c840]"></div>
+          </div>
+          <img src="https://placehold.co/310x420/f8f8f8/d4d4d4?text=Landing+Page" alt="Landing Page" class="w-full">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CLIENT LOGOS — STATIC 2-ROW GRID
+  ════════════════════════════════════════ -->
+  <div class="border-y border-border bg-white py-5">
+    <div class="max-w-[1216px] mx-auto px-6">
+      <!-- Row 1 -->
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">↑ Lightdash</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">NO·T</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Attlend</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">if.me AI</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Othena</span>
+      </div>
+      <!-- Divider -->
+      <div class="border-t border-border mb-3"></div>
+      <!-- Row 2 -->
+      <div class="flex items-center justify-between">
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">↑ ICU</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">↑ Qustent</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">↑ Closed</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Commonaly</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Fiat Fox</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">BALLOT</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf] whitespace-nowrap">Zest.fit</span>
+      </div>
+      <!-- Count -->
+      <p class="text-[10px] text-mid-gray mt-3">A wide range of 14 brands</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
+       SERVICES — ONE TEAM, FULL STACK
+  ════════════════════════════════════════ -->
+  <section class="max-w-[1216px] mx-auto px-6 py-20">
+
+    <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">What we do</p>
+    <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-10">One team, full stack</h2>
+
+    <!-- 3-col service grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- MVPs & product design -->
+      <div class="card-hover bg-white border border-border rounded-xl p-5">
+        <div class="w-9 h-9 rounded-lg bg-[#fff1ec] flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4f17" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">MVPs & product design</h3>
+        <p class="text-[12px] text-mid-gray leading-relaxed">Ship fast with pixel-perfect product design that drives activation and conversion.</p>
+      </div>
+
+      <!-- Custom product development -->
+      <div class="card-hover bg-white border border-border rounded-xl p-5">
+        <div class="w-9 h-9 rounded-lg bg-[#fff1ec] flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4f17" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">Custom product development</h3>
+        <p class="text-[12px] text-mid-gray leading-relaxed">Full-stack engineering from MVP prototype to a production-ready, scalable product.</p>
+      </div>
+
+      <!-- Website design & dev -->
+      <div class="card-hover bg-white border border-border rounded-xl p-5">
+        <div class="w-9 h-9 rounded-lg bg-[#fff1ec] flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4f17" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+        </div>
+        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">Website design & dev</h3>
+        <p class="text-[12px] text-mid-gray leading-relaxed">High-converting marketing sites built and shipped for B2B SaaS companies.</p>
+      </div>
+
+      <!-- Brand identity -->
+      <div class="card-hover bg-white border border-border rounded-xl p-5">
+        <div class="w-9 h-9 rounded-lg bg-[#fff1ec] flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4f17" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">Brand identity</h3>
+        <p class="text-[12px] text-mid-gray leading-relaxed">Brand strategy, visual identity, and design systems that scale with your company.</p>
+      </div>
+
+      <!-- UI Design & Motion -->
+      <div class="card-hover bg-white border border-border rounded-xl p-5">
+        <div class="w-9 h-9 rounded-lg bg-[#fff1ec] flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4f17" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">UI Design & Motion</h3>
+        <p class="text-[12px] text-mid-gray leading-relaxed">Polished interfaces with motion design that elevate the quality of your product.</p>
+      </div>
+
+      <!-- Pitch Decks & Collateral -->
+      <div class="card-hover bg-white border border-border rounded-xl p-5">
+        <div class="w-9 h-9 rounded-lg bg-[#fff1ec] flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff4f17" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3 class="text-[13px] font-semibold text-near-black mb-1.5">Pitch Decks & Collateral</h3>
+        <p class="text-[12px] text-mid-gray leading-relaxed">Investor-grade pitch decks and sales collateral that help you raise and close.</p>
+      </div>
+
+    </div>
+
+    <!-- Tool/stack brand icons row -->
+    <div class="mt-8 flex flex-wrap gap-7 items-center opacity-40">
+
+      <!-- Figma -->
+      <svg height="18" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5z" fill="#1abcfe"/><path d="M9.5 47.5A9.5 9.5 0 0 1 19 38v9.5A9.5 9.5 0 0 1 9.5 47.5z" fill="#0acf83"/><path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19z" fill="#ff7262"/><path d="M0 9.5A9.5 9.5 0 0 1 9.5 0H19v19H9.5A9.5 9.5 0 0 1 0 9.5z" fill="#f24e1e"/><path d="M0 28.5A9.5 9.5 0 0 1 9.5 19H19v19H9.5A9.5 9.5 0 0 1 0 28.5z" fill="#a259ff"/></svg>
+
+      <!-- X / Twitter -->
+      <svg height="16" viewBox="0 0 24 24" fill="#000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+
+      <!-- Framer -->
+      <svg height="18" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h14v7H7L0 0z" fill="#000"/><path d="M0 7h7l7 7H7v7L0 7z" fill="#000"/></svg>
+
+      <!-- GitHub -->
+      <svg height="18" viewBox="0 0 24 24" fill="#000"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.528 2.341 1.087 2.91.831.091-.645.349-1.087.635-1.337-2.22-.252-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.447-1.27.097-2.646 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+
+      <!-- Notion -->
+      <svg height="18" viewBox="0 0 24 24" fill="#000"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.212-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.373-1.54 1.447-1.632z"/></svg>
+
+      <!-- Linear (L icon) -->
+      <svg height="18" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.22541 61.5228c-.2225-.9485.90748-1.5459 1.59638-.857l37.3091 37.3091c.6893.6893.0919 1.8218-.857 1.5993C19.2052 94.4522 5.54788 80.7949 1.22541 61.5228zM.00189135 46.8891c-.01764.3818.13681.7503.42058 1.0341l51.6766 51.6765c.2838.2838.6523.4382 1.0341.4206 2.6102-.1207 5.1472-.4688 7.5921-.9986.1841-.0394.3541-.1361.4896-.2717L4.13070 52.3914c-.13563.1355-.23230.3055-.27165.4896-.52988 2.4449-.87800 4.9819-.99763 7.5921zM4.60481 32.4948c-.16899.2935-.1408.6631.08118.9285l62.0903 62.0903c.2654.2654.6349.2947.9285.0818 1.8757-1.1007 3.6843-2.3351 5.4082-3.7012.1552-.1213.2733-.2881.338-.4789L8.30604 27.0867c-.19080.0647-.35764.1828-.47885.3380-1.36612 1.7239-2.60052 3.5325-3.70138 5.4082zM11.8944 23.2097c-.2678.2123-.3059.5978-.0861.8591l64.1331 64.1330c.2613.2199.6468.1818.8591-.086 1.6724-2.1107 3.1647-4.3659 4.4504-6.7378.1118-.2083.1012-.4615-.0277-.6596L18.6320 18.7593c-.1981-.1289-.4513-.1395-.6596-.0277-2.3719 1.2857-4.6271 2.7780-6.7378 4.4504zM23.8960 15.1905l-.0001-.0001c-.3264.1814-.4075.6025-.1653.8899l60.1302 60.1301c.2874.2422.7085.1611.8899-.1653 1.4095-2.5382 2.6119-5.1998 3.5854-7.9659.0706-.2035.0378-.4262-.0849-.6011L32.4616 11.6051c-.1749-.1227-.3976-.1555-.6011-.0849-2.7661.9736-5.4277 2.1759-7.9659 3.5854zM38.5591 9.14997c-.2009.1127-.3288.3158-.3441.5465l51.6705 51.6705c.2307-.0153.4338-.1432.5465-.3441C96.8265 49.9921 100 41.3523 100 32.0003 100 14.3268 85.6734 0 68 0c-9.3520 0-17.9918 3.17352-24.806 8.60297-.1372.1093-.5257.3709-.6349.547z" fill="#5E6AD2"/></svg>
+
+      <!-- Slack -->
+      <svg height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#E01E5A"/></svg>
+
+      <!-- Webflow text-mark approximation -->
+      <svg height="12" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="20" font-family="Arial,sans-serif" font-weight="700" font-size="22" fill="#4353FF">W</text></svg>
+
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       HOW DOES IT WORK
+  ════════════════════════════════════════ -->
+  <section class="border-t border-border">
+    <div class="max-w-[1216px] mx-auto px-6 py-20">
+
+      <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">Our process</p>
+      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-12">How does it work?</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Step 01 -->
+        <div>
+          <div class="bg-bg-light rounded-xl overflow-hidden mb-5">
+            <img src="https://placehold.co/540x300/eeeeee/cccccc?text=Book+an+Intro+Call" alt="Intro call" class="w-full h-48 object-cover">
+          </div>
+          <p class="text-[11px] text-mid-gray mb-1.5">Step <span class="font-semibold text-near-black">01</span></p>
+          <h3 class="text-[14px] font-semibold text-near-black mb-2">Book a 15 min intro call</h3>
+          <p class="text-[12px] text-mid-gray leading-relaxed">We learn about your vision, current state, priorities, and kick it off with a fit-to-go team update.</p>
+        </div>
+
+        <!-- Step 02 -->
+        <div>
+          <div class="bg-bg-light rounded-xl overflow-hidden mb-5">
+            <img src="https://placehold.co/540x300/eeeeee/cccccc?text=Project+Kicks+Off" alt="Project kickoff" class="w-full h-48 object-cover">
+          </div>
+          <p class="text-[11px] text-mid-gray mb-1.5">Step <span class="font-semibold text-near-black">02</span></p>
+          <h3 class="text-[14px] font-semibold text-near-black mb-2">Your project kicks off</h3>
+          <p class="text-[12px] text-mid-gray leading-relaxed">We put together a plan of action, deliverable timelines, and lock it to the final outcome.</p>
+        </div>
+
+        <!-- Step 03 -->
+        <div>
+          <div class="bg-bg-light rounded-xl overflow-hidden mb-5">
+            <img src="https://placehold.co/540x300/eeeeee/cccccc?text=You+Start+Seeing+Results" alt="Results" class="w-full h-48 object-cover">
+          </div>
+          <p class="text-[11px] text-mid-gray mb-1.5">Step <span class="font-semibold text-near-black">03</span></p>
+          <h3 class="text-[14px] font-semibold text-near-black mb-2">You start seeing results</h3>
+          <p class="text-[12px] text-mid-gray leading-relaxed">From design sprints to finished product. Daily updates from there.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       TESTIMONIALS / SOCIAL PROOF
+  ════════════════════════════════════════ -->
+  <section class="border-t border-border">
+    <div class="max-w-[1216px] mx-auto px-6 py-20">
+
+      <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-3">Our numbers speak</p>
+      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-3 max-w-md">
+        We've helped 100+ companies design, ship, and raise.
+      </h2>
+      <p class="text-[13px] text-mid-gray mb-10 max-w-sm">See how founders use our team as their trusted design and build partner.</p>
+
+      <!-- Testimonial card -->
+      <div class="bg-white border border-border rounded-2xl p-7 max-w-[560px] mb-10 relative">
+        <!-- Gold badge -->
+        <div class="absolute top-5 right-5 w-9 h-9 rounded-full bg-amber-400 flex items-center justify-center shadow-sm">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <p class="text-[13px] text-near-black leading-[1.75] mb-6">
+          "Designmine stands out for its exceptional ability to <strong>transform complex projects
+          into high-quality designs</strong> with speed, responsiveness and precision. They make a
+          <strong>unique and valuable partner</strong> for our project."
+        </p>
+
+        <div class="flex items-center gap-3">
+          <img src="https://placehold.co/36x36/e0e0e0/999?text=GB" alt="GetBurgess" class="w-9 h-9 rounded-full object-cover">
+          <div>
+            <p class="text-[12px] font-semibold text-near-black">GetBurgess</p>
+            <p class="text-[11px] text-mid-gray">Co-founder & CTO</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logo bar -->
+      <div class="flex flex-wrap gap-7 items-center">
+        <span class="text-[12px] font-semibold text-[#b0b6bf]">↑ Lightdash</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf]">Reddit</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf]">Brainbox AI</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf]">NO·T</span>
+        <span class="text-[12px] font-semibold text-[#b0b6bf]">Q Chat/AI</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FAQ
+  ════════════════════════════════════════ -->
+  <section class="border-t border-border">
+    <div class="max-w-[1216px] mx-auto px-6 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-14">
+
+        <!-- Left -->
+        <div>
+          <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">Got questions?</p>
+          <h2 class="text-[24px] font-bold tracking-[-0.025em] text-near-black mb-6">Read the FAQs</h2>
+
+          <!-- Avatar card -->
+          <div class="bg-bg-light rounded-xl p-5 max-w-[260px]">
+            <div class="flex items-center mb-3">
+              <img src="https://placehold.co/34x34/d0d0d0/888?text=A1" alt="Founder 1" class="w-8 h-8 rounded-full object-cover">
+              <img src="https://placehold.co/34x34/c0c0c0/777?text=A2" alt="Founder 2" class="w-8 h-8 rounded-full object-cover -ml-2.5">
+            </div>
+            <p class="text-[12px] font-semibold text-near-black mb-1">Can't find your answer?</p>
+            <p class="text-[11px] text-mid-gray leading-relaxed mb-3">Book a call with a founder of Designmine to discuss your needs.</p>
+            <button class="text-[11px] bg-black text-white px-3 py-1.5 rounded-full font-medium">Book a call →</button>
+          </div>
+
+          <p class="text-[11px] text-mid-gray mt-4">or send us an <a href="#" class="underline hover:text-near-black">email message</a></p>
+        </div>
+
+        <!-- Right: accordion -->
+        <div>
+          <div class="divide-y divide-border">
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">How does team can pay down?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We operate on a flexible subscription model. You can pause, scale up, or cancel anytime with no long-term contracts.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">What happens if my project scope changes mid-way?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We're flexible. We reassess priorities together and realign the roadmap to meet your most important outcomes.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">How do you communicate and manage work?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We use Slack, Notion, and Figma. Daily async updates and weekly video syncs to keep you fully in the loop.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">Can you collaborate with our in-house team?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Absolutely. We often embed directly into existing teams and workflows without disrupting your current processes.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">Why not hire designers full-time?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We're faster to spin up, more cost-effective at scale, and cover a broader skill set than any single full-time hire.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">Designmine vs other companies</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">We specialize exclusively in B2B tech, giving us deep domain expertise that generalist agencies simply don't have.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">What if I don't have enough design work every month?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Pause your subscription and resume when work picks up. You only pay for what you actually need.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">How is this different than hiring a freelancer?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">A full team means reliable output, no single point of failure, and skills that span design, dev, and strategy.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">Can we scale up the team if we need more?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Yes, we flex team size and bandwidth based on your current project demands with no lead time.</div>
+            </div>
+
+            <div class="faq-item py-4 cursor-pointer select-none" onclick="this.classList.toggle('faq-open')">
+              <div class="flex items-center justify-between gap-4">
+                <span class="text-[13px] font-medium text-near-black">Can you handle branding, product, and website work?</span>
+                <svg class="faq-chevron w-4 h-4 text-mid-gray flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="faq-answer pt-3 text-[12px] text-mid-gray leading-relaxed">Yes — that's exactly our specialty. One team for brand, product, and website. No juggling multiple vendors.</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       PORTFOLIO — PRODUCTS WE'VE SHIPPED
+  ════════════════════════════════════════ -->
+  <section class="border-t border-border">
+    <div class="max-w-[1216px] mx-auto px-6 py-20">
+
+      <p class="text-[10px] tracking-[0.12em] uppercase text-mid-gray mb-2">Portfolio</p>
+      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-10">Products we've shipped</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- Project 1 -->
+        <div class="card-hover bg-white border border-border rounded-xl overflow-hidden">
+          <img src="https://placehold.co/680x380/f0f0f0/c8c8c8?text=Project+One" alt="Project One" class="w-full aspect-video object-cover">
+          <div class="px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
+              <span>Name</span><span class="text-border-md">|</span>
+              <span>Product</span><span class="text-border-md">|</span>
+              <span>Website</span><span class="text-border-md">|</span>
+              <span>Brand</span>
+            </div>
+            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Project 2 — orange tint -->
+        <div class="card-hover border border-border rounded-xl overflow-hidden">
+          <img src="https://placehold.co/680x380/fff0e8/f0a070?text=Project+Two" alt="Project Two" class="w-full aspect-video object-cover">
+          <div class="px-4 py-3 flex items-center justify-between bg-white">
+            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
+              <span>Name</span><span class="text-border-md">|</span>
+              <span>Product</span><span class="text-border-md">|</span>
+              <span>Website</span><span class="text-border-md">|</span>
+              <span>Brand</span>
+            </div>
+            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card-hover bg-white border border-border rounded-xl overflow-hidden">
+          <img src="https://placehold.co/680x380/f5f5f5/cccccc?text=Project+Three" alt="Project Three" class="w-full aspect-video object-cover">
+          <div class="px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
+              <span>Name</span><span class="text-border-md">|</span>
+              <span>Product</span><span class="text-border-md">|</span>
+              <span>Website</span><span class="text-border-md">|</span>
+              <span>Brand</span>
+            </div>
+            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="card-hover bg-white border border-border rounded-xl overflow-hidden">
+          <img src="https://placehold.co/680x380/f5f5f5/cccccc?text=Project+Four" alt="Project Four" class="w-full aspect-video object-cover">
+          <div class="px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-[10px] tracking-wider text-mid-gray uppercase">
+              <span>Name</span><span class="text-border-md">|</span>
+              <span>Product</span><span class="text-border-md">|</span>
+              <span>Website</span><span class="text-border-md">|</span>
+              <span>Brand</span>
+            </div>
+            <a href="#" class="text-[10px] font-bold tracking-wider text-near-black uppercase underline underline-offset-2">Case Study →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       STATS + FINAL CTA
+  ════════════════════════════════════════ -->
+  <section class="border-t border-border">
+    <div class="max-w-[1216px] mx-auto px-6 py-20">
+
+      <h2 class="text-[28px] font-bold tracking-[-0.025em] text-near-black mb-3">
+        Stop waiting on demand.<br>Start shipping.
+      </h2>
+      <p class="text-[13px] text-mid-gray mb-10 max-w-sm">No more long discovery calls. No thesis. Our team is designed for Seed to Series A companies.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
+
+        <!-- Stat 1 -->
+        <div class="bg-white border border-border rounded-xl p-6">
+          <div class="inline-flex items-center gap-1.5 bg-[#fff1ec] rounded-full px-2.5 py-1 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            <span class="text-[10px] font-semibold text-brand tracking-wide">Sales Qualified</span>
+          </div>
+          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">+32%</div>
+          <div class="text-[13px] text-mid-gray mb-3">average demo conversion</div>
+          <p class="text-[11px] text-mid-gray leading-relaxed">From MVP to Series A. Our design helps teams close more demos and turn clicks into qualified pipeline.</p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="bg-white border border-border rounded-xl p-6">
+          <div class="inline-flex items-center gap-1.5 bg-[#fff1ec] rounded-full px-2.5 py-1 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            <span class="text-[10px] font-semibold text-brand tracking-wide">Discovery Round</span>
+          </div>
+          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">6+</div>
+          <div class="text-[13px] text-mid-gray mb-3">months average engagement</div>
+          <p class="text-[11px] text-mid-gray leading-relaxed">We don't just design and disappear. We stay as your trusted design & dev partner for the long haul.</p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="bg-white border border-border rounded-xl p-6">
+          <div class="inline-flex items-center gap-1.5 bg-[#fff1ec] rounded-full px-2.5 py-1 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            <span class="text-[10px] font-semibold text-brand tracking-wide">Seed Rounds</span>
+          </div>
+          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">65+</div>
+          <div class="text-[13px] text-mid-gray mb-3">startups Seed to Series A</div>
+          <p class="text-[11px] text-mid-gray leading-relaxed">Teams come to us right after they raise. We help them move faster with less overhead or noise.</p>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="bg-white border border-border rounded-xl p-6">
+          <div class="inline-flex items-center gap-1.5 bg-[#fff1ec] rounded-full px-2.5 py-1 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+            <span class="text-[10px] font-semibold text-brand tracking-wide">Moves Faster</span>
+          </div>
+          <div class="text-[36px] font-extrabold text-near-black tracking-tight leading-none mb-1">4–8</div>
+          <div class="text-[13px] text-mid-gray mb-3">weeks average delivery</div>
+          <p class="text-[11px] text-mid-gray leading-relaxed">Most projects launch before most agency kickoff meetings even happen. We ship, fast.</p>
+        </div>
+
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-wrap gap-3">
+        <button class="bg-near-black text-white text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-black transition-colors">
+          Book a strategy call
+        </button>
+        <button class="border border-border text-near-black text-[13px] font-medium px-6 py-2.5 rounded-full hover:bg-bg-light transition-colors">
+          View all work
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="border-t border-border bg-white">
+    <div class="max-w-[1216px] mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+      <div>
+        <div class="text-sm font-bold tracking-[-0.03em] mb-1">DESIGNMINE</div>
+        <p class="text-[11px] text-mid-gray">© 2024 Designmine. All rights reserved.</p>
+      </div>
+      <nav class="flex flex-wrap gap-5 text-[12px] text-mid-gray">
+        <a href="#" class="hover:text-near-black transition-colors">Services</a>
+        <a href="#" class="hover:text-near-black transition-colors">Process</a>
+        <a href="#" class="hover:text-near-black transition-colors">Testimonials</a>
+        <a href="#" class="hover:text-near-black transition-colors">FAQs</a>
+        <a href="#" class="hover:text-near-black transition-colors">Work</a>
+        <a href="#" class="hover:text-near-black transition-colors">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
